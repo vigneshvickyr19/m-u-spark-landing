@@ -23,7 +23,7 @@ const ComparisonSection = () => {
         >
           <span className="section-label justify-center mb-4">Compare our features</span>
           <h2 className="text-3xl md:text-5xl font-extrabold mt-4">
-            Why choose <span className="gradient-text">M&U</span>?
+            Why choose <span className="gradient-text">Meand You</span>?
           </h2>
         </motion.div>
 
@@ -42,7 +42,7 @@ const ComparisonSection = () => {
               {/* Header */}
               <div className="grid grid-cols-3 text-sm font-bold border-b border-border/50 px-6 py-5">
                 <span className="text-muted-foreground">Features</span>
-                <span className="text-center text-foreground">U&M</span>
+                <span className="text-center text-foreground">Meand You</span>
                 <span className="text-center text-muted-foreground">Other Dating Apps</span>
               </div>
               {/* Rows */}
