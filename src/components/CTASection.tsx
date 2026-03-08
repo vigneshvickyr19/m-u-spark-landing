@@ -22,8 +22,8 @@ const CTASection = () => {
                 Start Meeting <span className="gradient-text">Verified People.</span>
               </h2>
               <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur, a lorem egestas natilus facilisi.
-                Aenean etiam sapien morbi tincidunt sit amet purus.
+                Join a secure community where every profile is verified and every connection 
+                is genuine. Experience the next level of social discovery with M&U today.
               </p>
 
               <div className="flex items-center gap-4">
@@ -39,9 +39,6 @@ const CTASection = () => {
             </div>
 
             <div className="relative flex justify-center items-end">
-              <div className="absolute top-4 right-4 bg-destructive/20 text-destructive text-xs font-bold px-3 py-1 rounded-full">
-                Video call
-              </div>
               <div className="rounded-2xl overflow-hidden border border-border/50 w-full max-w-sm">
                 <img src={coupleCta} alt="Verified people" className="w-full h-72 object-cover" />
               </div>

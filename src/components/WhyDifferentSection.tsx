@@ -57,7 +57,7 @@ const WhyDifferentSection = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-            Why U&M is <span className="text-[#FF7F47]">different</span>
+            Why M&U is <span className="text-[#FF7F47]">different</span>
           </h2>
         </motion.div>
 

@@ -22,7 +22,10 @@ const HeroContent = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-        <button className="h-14 px-10 rounded-full font-bold border border-white/10 bg-white/5 backdrop-blur-md text-foreground transition-all duration-200 hover:bg-white/10 flex items-center justify-center gap-2 group active:scale-95">
+        <button 
+          onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+          className="h-14 px-10 rounded-full font-bold border border-white/10 bg-white/5 backdrop-blur-md text-foreground transition-all duration-200 hover:bg-white/10 flex items-center justify-center gap-2 group active:scale-95"
+        >
           See how it works <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
         <button className="h-14 px-10 rounded-full font-bold bg-[#FF7F47] text-white transition-all duration-200 hover:brightness-110 flex items-center justify-center gap-2 group shadow-lg shadow-[#FF7F47]/20 active:scale-95">

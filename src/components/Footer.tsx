@@ -1,34 +1,59 @@
-import { Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 import appIcon from "@/assets/app-icon.png";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
-  Explore: ["Stories", "Collections", "Blog"],
-  Company: ["Our Story", "Why Teastack", "Contact Us"],
-  Support: ["FAQs", "Privacy Policy", "Terms & Conditions"],
+  Explore: [
+    // { name: "Stories", path: "#" },
+    { name: "Community Guidelines", path: "/guidelines" },
+    { name: "Cookies", path: "/cookies" },
+  ],
+  Company: [
+    // { name: "Our Story", path: "#" },
+    { name: "Safety Policy", path: "/safety" },
+    { name: "Contact Us", path: "/contact" },
+  ],
+  Support: [
+    { name: "FAQs", path: "/faq" },
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms & Conditions", path: "/terms" },
+  ],
 };
+
+const XIcon = ({ size = 24, className = "" }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
 
 const Footer = () => {
   const socials = [
     { icon: Instagram, name: "instagram" },
     { icon: Facebook, name: "facebook" },
-    { icon: Twitter, name: "x" },
+    { icon: XIcon, name: "x" },
     { icon: Linkedin, name: "linkedin" },
   ];
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-white/5 py-20 px-6">
+    <footer id="footer" className="bg-[#0A0A0A] border-t border-white/5 py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Brand Section */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-[#FF7F47] flex items-center justify-center shadow-[0_0_20px_rgba(255,127,71,0.2)]">
-                <img src={appIcon} alt="M&U" className="w-6 h-6 object-contain brightness-0 invert" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,127,71,0.15)] flex items-center justify-center bg-white/5">
+                <img src={appIcon} alt="M&U" className="w-full h-full object-cover" />
               </div>
-              <span className="text-white font-bold text-2xl tracking-tight">Me & You</span>
+              <span className="text-white font-bold text-2xl tracking-tight">M&U</span>
             </div>
             <p className="text-zinc-500 text-sm leading-relaxed mb-8 max-w-xs">
-              Lorem ipsum dolor sit amet consectetur. Fames nunc volutpat metus non enim in. Nulla lorem.
+              Premium dating for those who value authenticity. We connect verified individuals through real-time discovery and genuine interactions near you.
             </p>
             <div className="flex items-center gap-4">
               {socials.map((social) => (
@@ -50,10 +75,13 @@ const Footer = () => {
                 <h4 className="text-white font-bold text-base mb-6 tracking-wide uppercase text-[12px]">{title}</h4>
                 <ul className="space-y-4">
                   {links.map((link) => (
-                    <li key={link}>
-                      <a href="#" className="text-zinc-500 text-sm hover:text-[#FF7F47] transition-colors duration-200">
-                        {link}
-                      </a>
+                    <li key={link.name}>
+                      <Link 
+                        to={link.path} 
+                        className="text-zinc-500 text-sm hover:text-[#FF7F47] transition-colors duration-200"
+                      >
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -64,12 +92,12 @@ const Footer = () => {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-zinc-600 text-xs">
-            © 2025 Me & You. All rights reserved.
+            © 2026 M&U. All rights reserved.
           </p>
           <div className="flex gap-6 text-zinc-600 text-xs uppercase tracking-widest font-medium">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

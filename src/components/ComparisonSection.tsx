@@ -23,7 +23,7 @@ const ComparisonSection = () => {
         >
           <span className="section-label justify-center mb-4">Compare our features</span>
           <h2 className="text-3xl md:text-5xl font-extrabold mt-4">
-            Why choose <span className="gradient-text">Meand You</span>?
+            Why choose <span className="gradient-text">M&U</span>?
           </h2>
         </motion.div>
 
