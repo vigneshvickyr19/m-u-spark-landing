@@ -79,7 +79,7 @@ const LegalPage = ({ type }: { type: keyof typeof legalData }) => {
             )}
 
             {/* General Content Case */}
-            {(type !== "faq" && 'sections' in data) && (data.sections as any[]).map((section, i) => (
+            {('sections' in data) && (data.sections as any[]).map((section, i) => (
               <section key={i} className="space-y-4">
                 <h2 className="text-2xl font-bold text-white tracking-tight pt-4">
                   {section.title}
@@ -118,21 +118,18 @@ const LegalPage = ({ type }: { type: keyof typeof legalData }) => {
               </section>
             ))}
 
-            {/* Special Simple Cases (Refund, Cookies) */}
-            {type === 'refund' && 'text' in data && (
+            {/* Top-level text for simple cases */}
+            {(!('sections' in data) && !('items' in data) && 'text' in data) && (
               <p className="leading-relaxed text-zinc-400">{(data as any).text}</p>
             )}
 
-            {type === 'cookies' && (
-              <div className="space-y-6">
-                <p className="leading-relaxed italic">{(data as any).text}</p>
-                <ul className="space-y-3 list-disc pl-5 marker:text-primary">
-                  {(data as any).list.map((li: string, i: number) => (
-                    <li key={i} className="pl-2">{li}</li>
-                  ))}
-                </ul>
-                <p className="text-sm text-zinc-500">{(data as any).footer}</p>
-              </div>
+            {/* Top-level list for simple cases */}
+            {(!('sections' in data) && 'list' in data) && (
+              <ul className="space-y-3 list-disc pl-5 marker:text-primary">
+                {(data as any).list.map((li: string, i: number) => (
+                  <li key={i} className="pl-2">{li}</li>
+                ))}
+              </ul>
             )}
 
             {/* Contact Section */}

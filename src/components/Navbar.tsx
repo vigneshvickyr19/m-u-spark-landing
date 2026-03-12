@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import appIcon from "@/assets/app-icon.png";
-import { ArrowUpRight } from "lucide-react";
 import { useEffect } from "react";
 
 /**
@@ -71,11 +70,31 @@ const Navbar = () => {
           <span className="text-white font-bold text-xl tracking-tight hidden xs:inline">Me & You</span>
         </Link>
 
-        {/* Action Button */}
-        <button className="h-10 px-5 sm:h-11 sm:px-7 rounded-full font-bold bg-[#FF7F47] text-white text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(255,127,71,0.3)] flex items-center justify-center gap-2 group active:scale-95 whitespace-nowrap">
-          Download <span className="hidden sm:inline">M&U</span>
-          <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </button>
+        {/* Premium Tagline Badge */}
+        <div className="relative flex items-center">
+          {/* Outer Glow Effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#FF7F47]/20 to-transparent blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          <div className="relative flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-xl transition-all duration-300 hover:border-[#FF7F47]/30 hover:bg-black/30 group">
+            {/* Live Indicator */}
+            <div className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7F47] opacity-40"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FF7F47]"></span>
+            </div>
+
+            {/* Content Space */}
+            <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold tracking-[0.12em] uppercase">
+              <span className="text-white/90">Real people</span>
+              <span className="w-[1px] h-3 bg-white/10 mx-0.5" />
+              <span className="bg-gradient-to-r from-[#FF7F47] to-[#FF9B6A] bg-clip-text text-transparent">Real distance</span>
+            </div>
+          </div>
+          
+          {/* Mobile version optimization for very small screens */}
+          <div className="absolute inset-0 flex items-center sm:hidden">
+            {/* Keeping the same structure but ensuring it doesn't break layout */}
+          </div>
+        </div>
       </div>
     </motion.nav>
   );

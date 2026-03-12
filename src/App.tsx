@@ -37,7 +37,12 @@ const App = () => (
           <Route path="/guidelines" element={<LegalPage type="community" />} />
           <Route path="/safety" element={<LegalPage type="safety" />} />
           <Route path="/cookies" element={<LegalPage type="cookies" />} />
-          <Route path="/anti-fake" element={<LegalPage type="antiFake" />} />
+          <Route path="/refund" element={<LegalPage type="refund" />} />
+          <Route path="/health-privacy" element={<LegalPage type="health" />} />
+          <Route path="/ip-policy" element={<LegalPage type="ip" />} />
+          <Route path="/accessibility" element={<LegalPage type="accessibility" />} />
+          <Route path="/age-verification" element={<LegalPage type="age" />} />
+          <Route path="/moderation" element={<LegalPage type="moderation" />} />
           <Route path="/contact" element={<ContactPage />} />
           
           <Route path="*" element={<NotFound />} />

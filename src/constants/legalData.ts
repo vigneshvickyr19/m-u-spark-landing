@@ -1,21 +1,35 @@
 export interface Section {
-  id: string;
   title: string;
-  content: Array<{
-    question?: string;
-    answer?: string;
-    text?: string;
-    list?: string[];
+  text?: string;
+  list?: string[];
+  subsections?: Array<{
+    title: string;
+    list: string[];
   }>;
+  footer?: string;
 }
 
-export const legalData = {
+export interface LegalDataItem {
+  title: string;
+  description?: string;
+  sections?: Section[];
+  items?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  text?: string;
+  list?: string[];
+  footer?: string;
+  info?: Record<string, string>;
+}
+
+export const legalData: Record<string, LegalDataItem> = {
   faq: {
     title: "Frequently Asked Questions",
     items: [
       {
-        question: "What is this app?",
-        answer: "Our platform is a global dating and social discovery application designed to help people connect, chat, and build meaningful relationships. Users can explore profiles, swipe to show interest, and match with others who share similar interests."
+        question: "What is M&U?",
+        answer: "M&U (Me & You) is a premium dating and social discovery application designed to help people connect, chat, and build meaningful relationships through real-time discovery."
       },
       {
         question: "Who can use the app?",
@@ -23,232 +37,366 @@ export const legalData = {
       },
       {
         question: "How does the matching system work?",
-        answer: "Our matching system allows users to swipe or show interest in other profiles. When two users mutually express interest, a match is created, enabling them to start chatting within the platform."
+        answer: "Our matching system allows users to discover nearby matches and express interest. When two users mutually express interest, a match is created."
       },
       {
-        question: "How do you prevent fake profiles?",
-        answer: "We use a combination of automated fraud detection systems, manual moderation, profile verification processes, and user reporting tools. Accounts found violating policies may be suspended or permanently banned."
+        question: "How do you ensure safety?",
+        answer: "We use a combination of automated systems, human moderation, and age verification to maintain a safe environment for all users."
       },
       {
         question: "Is my personal information safe?",
-        answer: "Yes. We use industry-standard security measures such as encryption, secure servers, and access controls to protect user information."
-      },
-      {
-        question: "Can I report or block someone?",
-        answer: "Yes. Users can report or block other users directly from their profile or chat window. Our moderation team reviews all reports carefully."
-      },
-      {
-        question: "Is the app free?",
-        answer: "Basic features are available for free. Some advanced features may require a premium subscription or in-app purchase."
-      },
-      {
-        question: "Can I delete my account?",
-        answer: "Yes. You can delete your account anytime through the settings section. Once deleted, your data will be removed according to our privacy policy."
-      },
-      {
-        question: "Is the app available worldwide?",
-        answer: "Yes, the platform is available globally, although certain features may vary depending on local laws and regulations."
-      },
-      {
-        question: "How can I contact support?",
-        answer: "You can contact our support team via the Help Center or official support email listed on our website or app."
-      }
-    ]
-  },
-  community: {
-    title: "Community Guidelines",
-    description: "To maintain a respectful and safe environment, all users must follow these guidelines.",
-    sections: [
-      {
-        title: "Respect Others",
-        text: "Treat all users with respect. Harassment, bullying, hate speech, or discrimination will not be tolerated."
-      },
-      {
-        title: "Authentic Profiles",
-        text: "Users must create profiles that accurately represent themselves. Fake profiles, impersonation, or misleading information are strictly prohibited."
-      },
-      {
-        title: "No Illegal Activities",
-        text: "Users may not use the platform for illegal activities including scams, fraud, or solicitation."
-      },
-      {
-        title: "Appropriate Content",
-        text: "Profiles, photos, and messages must not contain:",
-        list: [
-          "Nudity or explicit sexual content",
-          "Violence or threats",
-          "Offensive or hateful language"
-        ]
-      },
-      {
-        title: "Report Violations",
-        text: "Users are encouraged to report suspicious or abusive behavior to help maintain a safe community."
-      }
-    ]
-  },
-  safety: {
-    title: "Safety Policy",
-    description: "User safety is our top priority.",
-    sections: [
-      {
-        title: "Online Safety",
-        text: "Users should avoid sharing sensitive information such as:",
-        list: [
-          "Home address",
-          "Financial details",
-          "Passwords",
-          "Government identification numbers"
-        ]
-      },
-      {
-        title: "Meeting in Person",
-        text: "If you choose to meet someone offline:",
-        list: [
-          "Meet in a public place",
-          "Inform a trusted friend or family member",
-          "Arrange your own transportation"
-        ]
-      },
-      {
-        title: "Suspicious Behavior",
-        text: "Immediately report users who:",
-        list: [
-          "Ask for money",
-          "Attempt scams",
-          "Use threatening or abusive language"
-        ]
+        answer: "Yes. We implement industry-standard security measures to protect your personal data from unauthorized access."
       }
     ]
   },
   privacy: {
     title: "Privacy Policy",
+    description: "Effective Date: March 12, 2026 | Last Updated: March 12, 2026",
     sections: [
       {
         title: "Introduction",
-        text: "This Privacy Policy explains how we collect, use, store, and protect your personal information when you use our platform."
+        text: "M&U (Me & You) respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application."
       },
       {
         title: "Information We Collect",
+        text: "We may collect the following types of information:",
         subsections: [
           {
             title: "Account Information",
-            list: ["Name", "Email address", "Date of birth", "Gender and preferences"]
+            list: ["Name", "Email address", "Phone number", "Date of birth", "Gender"]
           },
           {
             title: "Profile Information",
-            list: ["Photos", "Bio", "Interests"]
+            list: ["Photos", "Bio or personal description", "Interests and preferences"]
           },
           {
-            title: "Technical Data",
-            list: ["Device information", "IP address", "App usage data"]
+            title: "Usage Information",
+            list: ["Device information", "IP address", "App usage activity", "Log data"]
           }
         ]
       },
       {
+        title: "Location Data",
+        text: "To help users discover nearby matches, we may collect approximate location information."
+      },
+      {
         title: "How We Use Your Information",
-        text: "Your information may be used to:",
+        text: "We use your information to:",
         list: [
-          "Provide matchmaking services",
-          "Improve app performance",
-          "Detect fraud and abuse",
-          "Provide customer support"
+          "Provide and improve our services",
+          "Match you with other users",
+          "Ensure platform safety",
+          "Prevent fraud and abuse",
+          "Send notifications and updates"
         ]
       },
       {
         title: "Data Sharing",
-        text: "We do not sell personal data. Information may be shared with:",
+        text: "We do not sell your personal data. Information may be shared with:",
         list: [
-          "Trusted service providers",
+          "Service providers supporting the platform",
           "Legal authorities when required by law",
-          "Fraud prevention partners"
+          "Security and fraud prevention services"
         ]
       },
       {
         title: "Data Security",
-        text: "We use encryption, secure servers, and monitoring systems to protect user data."
+        text: "We implement industry-standard security measures to protect user data from unauthorized access, misuse, or disclosure."
       },
       {
         title: "Data Retention",
-        text: "Your data will be stored only as long as necessary to provide services or comply with legal obligations."
+        text: "We retain user information as long as necessary to operate our services or comply with legal obligations."
       },
       {
-        title: "Your Rights",
-        text: "Depending on your location, you may have rights such as:",
+        title: "User Rights",
+        text: "Users may request to:",
         list: [
-          "Access your personal data",
-          "Request correction",
-          "Request deletion",
-          "Withdraw consent"
+          "Access their data",
+          "Correct inaccurate data",
+          "Delete their account and personal information"
+        ],
+        footer: "Requests can be sent to support@muapp.com."
+      },
+      {
+        title: "Updates",
+        text: "We may update this policy from time to time. Continued use of the platform indicates acceptance of the updated policy."
+      }
+    ]
+  },
+  health: {
+    title: "Consumer Health Data Privacy Policy",
+    description: "This policy applies to health-related data that may be collected during use of the M&U platform.",
+    sections: [
+      {
+        title: "Types of Data",
+        text: "Health-related data may include:",
+        list: [
+          "Sexual orientation preferences",
+          "Gender identity",
+          "Dating preferences",
+          "Wellness-related profile details"
         ]
+      },
+      {
+        title: "Use of Health Data",
+        text: "We use this data only to:",
+        list: [
+          "Improve matching algorithms",
+          "Provide personalized experiences",
+          "Maintain user safety"
+        ]
+      },
+      {
+        title: "Data Protection",
+        text: "Health data is treated as sensitive information and is protected with enhanced security measures."
+      },
+      {
+        title: "Data Sharing",
+        text: "M&U does not sell or share health data with advertisers. Data may only be shared with platform service providers or legal authorities when legally required."
       }
     ]
   },
   terms: {
-    title: "Terms & Conditions",
+    title: "Terms of Service",
+    description: "By using the M&U platform, you agree to these Terms of Service.",
     sections: [
       {
-        title: "Acceptance of Terms",
-        text: "By creating an account or using the platform, you agree to comply with these Terms and Conditions."
-      },
-      {
         title: "Eligibility",
-        text: "Users must be at least 18 years old."
+        text: "Users must be at least 18 years old to use the platform."
       },
       {
         title: "User Responsibilities",
-        text: "Users agree not to:",
+        text: "Users agree to:",
         list: [
-          "Create fake accounts",
-          "Harass or threaten other users",
-          "Share illegal or explicit content",
-          "Conduct scams or fraudulent activities"
+          "Provide accurate information",
+          "Respect other users",
+          "Follow community guidelines",
+          "Avoid illegal activities"
         ]
       },
       {
-        title: "User Content",
-        text: "Users are responsible for content they upload including photos, messages, and profile information."
+        title: "Account Security",
+        text: "Users are responsible for maintaining the confidentiality of their login credentials."
       },
       {
-        title: "Account Termination",
-        text: "We reserve the right to suspend or terminate accounts that violate our policies."
+        title: "Prohibited Activities",
+        text: "The following are strictly prohibited:",
+        list: [
+          "Harassment or abuse",
+          "Fake profiles",
+          "Impersonation",
+          "Posting illegal or explicit content"
+        ]
+      },
+      {
+        title: "Termination",
+        text: "M&U reserves the right to suspend or terminate accounts that violate these terms."
+      },
+      {
+        title: "Disclaimer",
+        text: "M&U does not guarantee compatibility or successful relationships between users."
       },
       {
         title: "Limitation of Liability",
-        text: "The platform is provided “as is”. We are not responsible for user interactions or outcomes of relationships formed through the service."
-      },
-      {
-        title: "Changes to Terms",
-        text: "We may update these terms periodically. Continued use of the platform indicates acceptance of the revised terms."
+        text: "M&U is not responsible for damages resulting from interactions between users."
       }
     ]
   },
   cookies: {
     title: "Cookie Policy",
-    text: "Our website and app use cookies to improve user experience.",
-    list: [
-      "Remember user preferences",
-      "Analyze website traffic",
-      "Improve platform performance"
-    ],
-    footer: "Users may disable cookies through browser settings, though some features may not function properly."
-  },
-  refund: {
-    title: "Refund Policy",
-    text: "Premium subscriptions may be eligible for refunds under certain conditions depending on the payment provider. Refund requests must be submitted within the timeframe specified by the app store or payment platform used for purchase."
-  },
-  antiFake: {
-    title: "Anti-Fake Profile Policy",
-    description: "We are committed to maintaining an authentic community.",
+    description: "M&U uses cookies and similar technologies to improve user experience.",
+    text: "Cookies are small files stored on your device that help websites remember user preferences and activity.",
     sections: [
       {
-        title: "Measures we use",
+        title: "Types of Cookies Used",
+        subsections: [
+          {
+            title: "Essential Cookies",
+            list: ["Required for the platform to function properly."]
+          },
+          {
+            title: "Analytics Cookies",
+            list: ["Help us understand how users interact with the platform."]
+          },
+          {
+            title: "Preference Cookies",
+            list: ["Store user settings and preferences."]
+          }
+        ]
+      },
+      {
+        title: "Managing Cookies",
+        text: "Users can manage or disable cookies through their browser settings."
+      }
+    ]
+  },
+  ip: {
+    title: "Intellectual Property Policy",
+    description: "All content on the M&U platform is protected by intellectual property laws.",
+    sections: [
+      {
+        title: "Ownership",
+        text: "The following belong to M&U:",
         list: [
-          "AI-based fake profile detection",
-          "Manual moderation",
-          "User reporting tools",
-          "Verification options"
+          "App design and interface",
+          "Logos and branding",
+          "Software code",
+          "Platform features"
+        ]
+      },
+      {
+        title: "User Content",
+        text: "Users retain ownership of the content they upload but grant M&U a license to use it for operating the platform."
+      },
+      {
+        title: "Restrictions",
+        text: "Users may not:",
+        list: [
+          "Copy platform code or design",
+          "Use the M&U brand without permission",
+          "Distribute platform content without authorization"
+        ]
+      }
+    ]
+  },
+  accessibility: {
+    title: "Accessibility Statement",
+    description: "M&U is committed to providing an accessible digital experience for all users. We aim to comply with accessibility standards such as WCAG 2.1.",
+    sections: [
+      {
+        title: "Accessibility Features",
+        text: "Our platform supports:",
+        list: [
+          "Screen readers",
+          "Keyboard navigation",
+          "Clear visual design",
+          "Text readability improvements"
+        ]
+      },
+      {
+        title: "Continuous Improvement",
+        text: "Accessibility is an ongoing effort and we regularly review the platform to improve usability.",
+        footer: "Users experiencing accessibility issues may contact support@muapp.com."
+      }
+    ]
+  },
+  community: {
+    title: "Community Guidelines",
+    description: "M&U is designed to foster respectful and meaningful connections. Users must follow these guidelines.",
+    sections: [
+      {
+        title: "Respectful Behavior",
+        text: "Users must not engage in:",
+        list: [
+          "Harassment",
+          "Hate speech",
+          "Bullying",
+          "Threats or violence"
+        ]
+      },
+      {
+        title: "Authentic Profiles",
+        text: "Users must create genuine profiles and use real photos. Fake profiles and impersonation are not allowed."
+      },
+      {
+        title: "Prohibited Content",
+        text: "The following content is not allowed:",
+        list: [
+          "Nudity or Pornographic material",
+          "Illegal activities",
+          "Hate speech",
+          "Scam-related content"
         ],
-        footer: "Accounts found violating authenticity policies will be restricted or permanently banned."
+        footer: "Violations may result in account suspension or permanent removal."
+      }
+    ]
+  },
+  refund: {
+    title: "Refund & Subscription Policy",
+    description: "M&U may offer premium subscription plans including weekly, monthly, and quarterly plans.",
+    sections: [
+      {
+        title: "Auto-Renewal",
+        text: "Subscriptions automatically renew unless canceled before the billing period ends."
+      },
+      {
+        title: "Cancellation",
+        text: "Users can cancel subscriptions through App Store settings, Google Play settings, or Account settings."
+      },
+      {
+        title: "Refunds",
+        text: "Purchases are generally non-refundable except in cases such as billing errors or duplicate charges. Refund requests must be submitted within 7 days of purchase."
+      }
+    ]
+  },
+  safety: {
+    title: "Safety Tips",
+    description: "User safety is a priority for M&U.",
+    sections: [
+      {
+        title: "Protect Personal Information",
+        text: "Avoid sharing:",
+        list: [
+          "Home address",
+          "Financial details",
+          "Government IDs"
+        ]
+      },
+      {
+        title: "Meet Safely",
+        text: "If meeting someone in person:",
+        list: [
+          "Meet in a public place",
+          "Inform a friend or family member",
+          "Arrange your own transportation"
+        ]
+      },
+      {
+        title: "Avoid Money Requests",
+        text: "Never send money to someone you meet online."
+      }
+    ]
+  },
+  age: {
+    title: "Age Verification Policy",
+    description: "M&U is intended only for users aged 18 and above.",
+    sections: [
+      {
+        title: "Verification Methods",
+        text: "We may use:",
+        list: [
+          "Mobile verification",
+          "Photo verification",
+          "Identity checks"
+        ]
+      },
+      {
+        title: "Underage Accounts",
+        text: "Accounts belonging to users under 18 will be removed immediately. Users may report suspected underage accounts."
+      }
+    ]
+  },
+  moderation: {
+    title: "Content Moderation Policy",
+    description: "M&U actively moderates platform content to maintain a safe environment.",
+    sections: [
+      {
+        title: "Moderated Content",
+        text: "Content moderation applies to:",
+        list: [
+          "Profile photos",
+          "Messages",
+          "Usernames",
+          "Uploaded media"
+        ]
+      },
+      {
+        title: "Moderation Methods",
+        text: "We use both automated systems and human review teams."
+      },
+      {
+        title: "Enforcement",
+        text: "Violations may result in content removal, account suspension, or permanent bans. Users may appeal moderation decisions by contacting support."
       }
     ]
   },
@@ -256,9 +404,9 @@ export const legalData = {
     title: "Contact Information",
     description: "For inquiries related to support, privacy, or legal matters, contact:",
     info: {
-      support: "support@meandyou.com",
-      privacy: "privacy@meandyou.com",
-      legal: "legal@meandyou.com"
+      support: "support@muapp.com",
+      privacy: "privacy@muapp.com",
+      legal: "legal@muapp.com"
     }
   }
 };

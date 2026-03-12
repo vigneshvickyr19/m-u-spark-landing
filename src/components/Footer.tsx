@@ -3,20 +3,24 @@ import appIcon from "@/assets/app-icon.png";
 import { Link } from "react-router-dom";
 
 const footerLinks = {
-  Explore: [
-    // { name: "Stories", path: "#" },
+  Connect: [
+    { name: "Safety Tips", path: "/safety" },
     { name: "Community Guidelines", path: "/guidelines" },
-    { name: "Cookies", path: "/cookies" },
+    { name: "Moderation Policy", path: "/moderation" },
+    { name: "Age Verification", path: "/age-verification" },
   ],
-  Company: [
-    // { name: "Our Story", path: "#" },
-    { name: "Safety Policy", path: "/safety" },
-    { name: "Contact Us", path: "/contact" },
-  ],
-  Support: [
-    { name: "FAQs", path: "/faq" },
+  Legal: [
     { name: "Privacy Policy", path: "/privacy" },
-    { name: "Terms & Conditions", path: "/terms" },
+    { name: "Terms of Service", path: "/terms" },
+    { name: "Cookie Policy", path: "/cookies" },
+    { name: "Refund Policy", path: "/refund" },
+    { name: "Health Privacy", path: "/health-privacy" },
+  ],
+  Resources: [
+    { name: "FAQs", path: "/faq" },
+    { name: "Contact Us", path: "/contact" },
+    { name: "Accessibility", path: "/accessibility" },
+    { name: "IP Policy", path: "/ip-policy" },
   ],
 };
 
